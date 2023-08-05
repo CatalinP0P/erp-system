@@ -1,4 +1,23 @@
-$primary: "#5A29E5";
-$primary-hover: "#906AFE";
-$black: "#25202D";
-$white: "#FEF6FF"
+$primary: #5A29E5;
+$primary-hover: #906AFE;
+$black: #25202D;
+$white: #FEF6FF;
+
+
+@mixin phone {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+  
+@mixin tablet {
+    @media (min-width: 768px) and (max-width: 991px) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: 992px) {
+      @content;
+    }
+}
