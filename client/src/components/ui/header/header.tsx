@@ -9,7 +9,6 @@ import { ClearRounded } from '@mui/icons-material'
 import { useAuth } from '../../../context/authContext'
 
 import './header.scss'
-import { useScrollTrigger } from '@mui/material'
 
 export default function Header({
   setMobileMenu,

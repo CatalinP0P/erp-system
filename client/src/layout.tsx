@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Header from './components/ui/header/header'
 import Navigation from './components/ui/navigation/navigation'
-import AuthProvider from './context/authContext'
 
 interface LayoutProps {
   children: React.ReactNode

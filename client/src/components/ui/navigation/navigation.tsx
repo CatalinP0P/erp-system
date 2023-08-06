@@ -8,9 +8,9 @@ import {
   Report,
   SvgIconComponent,
 } from '@mui/icons-material'
+import { useNavigate } from 'react-router-dom'
 
 import './navigation.scss'
-import { Paper } from '@mui/material'
 
 interface navLinkProps {
   link: string
@@ -67,6 +67,8 @@ const groups: navLinkGroup[] = [
 ]
 
 export default function Navigation() {
+  const navigate = useNavigate()
+
   return (
     <div className="nav__list">
       {groups.map((group) => {
@@ -77,8 +79,8 @@ export default function Navigation() {
               <div className="nav__list__group__items">
                 {group.links.map((link) => {
                   return (
-                    <a
-                      href={link.link}
+                    <label
+                      onClick={() => navigate(link.link)}
                       className={
                         'nav__item ' +
                         (window.location.href
@@ -91,7 +93,7 @@ export default function Navigation() {
                     >
                       <link.icon className="nav__item__icon" />
                       {link.text}
-                    </a>
+                    </label>
                   )
                 })}
               </div>
