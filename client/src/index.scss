@@ -1,7 +1,80 @@
+@use "./_variables" as variables;
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
     font-family: "Inter";
     box-sizing: border-box;
     margin: 0;
+    color: variables.$black-100
 }
+
+.layout__grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-grow: 1;
+    &>.layout__grid__destop__nav
+    {
+        @include variables.tablet {
+            display: none;
+        };
+        
+        @include variables.phone{
+            display: none;
+        }
+        border-right: 2px solid variables.$black-20;
+        width: 30%;
+        max-width: 15rem;
+        flex-grow: 1;
+    }
+
+    &>.layout__grid__mobile__nav{
+        position:fixed;
+        left: 0;
+        top: 4rem;
+        transition: all .225s ease-out;
+        bottom: 0;
+        width: min(30%, 300px);
+        transform: translateX(-100%);
+        pointer-events: none;
+        background-color: white;
+        z-index: 99;
+        
+        @include variables.desktop {
+            display: none;
+        };
+
+        &.active {
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 90;
+    background-color: rgba(0,0,0,.25);
+}
+
+
+.content__grid{
+    display: grid;
+    margin: .5rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    gap: .5rem;
+    height: fit-content;
+
+    .title {
+        color: variables.$primary;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+}
+
