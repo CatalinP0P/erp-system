@@ -72,8 +72,12 @@ body {
     margin: .5rem;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     width: 100%;
-    max-width: 1400px;
+    max-width: 1240px;
     gap: .5rem;
     height: fit-content;
+
+    @include variables.phone {
+        grid-template-columns: repeat(2, minmax(0, 1fr));        
+    }
 }
 

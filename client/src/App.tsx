@@ -7,13 +7,13 @@ import AuthProvider from './context/authContext'
 export default function App() {
   return (
     <AuthProvider>
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <Routes>
             <Route path="/" element={<Overview />} />
           </Routes>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </AuthProvider>
   )
 }
