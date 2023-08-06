@@ -16,12 +16,21 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+    
+    @include variables.phone {
+        display: none;
+    }
+
+    @include variables.tablet {
+        display: none;
+    }
 }
 
 .header__button {
     color: variables.$primary;
     cursor: pointer;
     transition: all .25s;
+    
     &:hover {
         color: variables.$primary-hover
     }
@@ -31,7 +40,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     max-width: 1640px;
 }
 
@@ -76,24 +85,22 @@
     }
 }
 
-
-
-
 .row {
     display: flex;
     flex-direction: row;
     gap: .5rem;
     align-items: center;
-}
 
-.mobile--menu__button{
-    color: variables.$primary;
+    .mobile--menu__button{
+        color: variables.$primary;
+        
+        @include variables.desktop {
+            display: none;
+        }   
     
-    @include variables.desktop {
-        display: none;
-    }   
-
-    &:hover {
-        color: variables.$primary-hover
+        &:hover {
+            color: variables.$primary-hover
+        }
     }
 }
+

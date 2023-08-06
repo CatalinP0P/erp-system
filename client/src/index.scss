@@ -9,12 +9,12 @@ body {
     color: variables.$black-100
 }
 
-.layout__grid {
+.layout--grid {
     display: flex;
     flex-direction: row;
     width: 100%;
     flex-grow: 1;
-    &>.layout__grid__destop__nav
+    &>.layout--grid__destop__nav
     {
         @include variables.tablet {
             display: none;
@@ -29,13 +29,13 @@ body {
         flex-grow: 1;
     }
 
-    &>.layout__grid__mobile__nav{
+    &>.layout--grid__mobile__nav{
         position:fixed;
         left: 0;
         top: 4rem;
         transition: all .225s ease-out;
         bottom: 0;
-        width: min(30%, 300px);
+        width: min(50%, 15rem);
         transform: translateX(-100%);
         pointer-events: none;
         background-color: white;
@@ -52,7 +52,7 @@ body {
     }
 }
 
-.overlay {
+.overlay--mobile {
     position: fixed;
     left: 0;
     right: 0;
@@ -60,10 +60,14 @@ body {
     bottom: 0;
     z-index: 90;
     background-color: rgba(0,0,0,.25);
+
+    @include variables.desktop {
+        display:none;
+    }
 }
 
 
-.content__grid{
+.content--grid{
     display: grid;
     margin: .5rem;
     grid-template-columns: repeat(4, minmax(0, 1fr));
