@@ -40,10 +40,10 @@ export default function Header({
           <div className="header__button">
             <Notifications />
           </div>
-          <div className="profile__card">
-            <div className="profile__card__container">
-              <label className="profile__card__name">Catalin Pop</label>
-              <label className="profile__card__email">
+          <div className="profile--card">
+            <div className="profile--card__container">
+              <label className="profile--card__name">Catalin Pop</label>
+              <label className="profile--card__email">
                 catalinpce@gmail.com
               </label>
             </div>

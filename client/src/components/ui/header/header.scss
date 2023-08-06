@@ -35,7 +35,7 @@
     max-width: 1640px;
 }
 
-.profile__card {
+.profile--card {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -46,34 +46,38 @@
     &>* {
         pointer-events: none;
     }
-}
 
-.profile__card__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: end;
-
-    .profile__card__name {
-        font-weight: semibold;
-        color: variables.$black-80
+    .profile--card__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+    
+        .profile--card__name {
+            font-weight: semibold;
+            color: variables.$black-80
+        }
+    
+        .profile--card__email {
+            font-weight: thin;
+            font-size: .75rem;
+            color: variables.$black-40
+        }
+    
     }
-
-    .profile__card__email {
-        font-weight: thin;
-        font-size: .75rem;
-        color: variables.$black-40
+    
+    .profile__card__image {
+        width: 3rem;
+        height: 3rem;
+        min-height: 3rem;
+        min-width: 3rem;
+        border-radius: 2rem;
+        object-fit: cover;
     }
 }
 
-.profile__card__image {
-    width: 3rem;
-    height: 3rem;
-    min-height: 3rem;
-    min-width: 3rem;
-    border-radius: 2rem;
-    object-fit: cover;
-}
+
+
 
 .row {
     display: flex;
