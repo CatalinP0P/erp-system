@@ -17,22 +17,46 @@
     align-items: center;
     gap: 1rem;
     
-    @include variables.phone {
-        display: none;
-    }
-
-    @include variables.tablet {
-        display: none;
-    }
 }
 
 .header__button {
     color: variables.$primary;
     cursor: pointer;
     transition: all .25s;
+    position: relative;
     
     &:hover {
         color: variables.$primary-hover
+    }
+}
+
+.header__button__container {
+    position: relative;
+}
+
+.overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
+.header__button__dropdown {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 2.75rem;
+    transform: translateY(-20px);
+    transition: all .25s ease-out;
+    background-color: white;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.25);
+    z-index: 100;
+
+    &.active {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -52,9 +76,10 @@
     align-items: center;
     margin-left: 2rem;
     cursor: pointer;
-
-    &>* {
-        pointer-events: none;
+    z-index: 99;
+    
+    @include variables.phone {
+        display: none;
     }
 
     .profile--card__container {
@@ -62,7 +87,12 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: end;
-        z-index: 90;
+        z-index: 99;
+        cursor: pointer;
+
+        &>* {
+            pointer-events: none;
+        }
     
         .profile--card__name {
             font-weight: semibold;
@@ -106,6 +136,7 @@
             transform: translateY(0);
             pointer-events: auto;
             opacity: 1;
+            z-index: 100;
         }
 
         .profile--card__dropdown__item{
