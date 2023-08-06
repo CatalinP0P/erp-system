@@ -14,22 +14,25 @@ export default function Layout({ children }: LayoutProps) {
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
       <Header setMobileMenu={setMobileMenu} mobileMenu={mobileMenu} />
-      <div className="layout__grid">
-        <div className="layout__grid__destop__nav">
+      <div className="layout--grid">
+        <div className="layout--grid__destop__nav">
           <Navigation />
         </div>
 
         <div
           className={
-            'layout__grid__mobile__nav ' + (mobileMenu ? 'active' : '')
+            'layout--grid__mobile__nav ' + (mobileMenu ? 'active' : '')
           }
         >
           <Navigation />
         </div>
         {mobileMenu && (
-          <div className="overlay" onClick={() => setMobileMenu(false)} />
+          <div
+            className="overlay--mobile"
+            onClick={() => setMobileMenu(false)}
+          />
         )}
-        <div className="content__grid">{children}</div>
+        <div className="content--grid">{children}</div>
       </div>
     </div>
   )
