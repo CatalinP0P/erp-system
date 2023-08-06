@@ -1,0 +1,19 @@
+@use "../../../_variables" as variables;
+
+.card {
+    padding: 1rem;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.25);
+    
+    
+    &.card-2 {
+        grid-column: span 2;
+    }
+
+    &.card-3 {
+        grid-column: span 3;
+    }
+
+    &.card-4 {
+        grid-column: span 4;
+    }
+}

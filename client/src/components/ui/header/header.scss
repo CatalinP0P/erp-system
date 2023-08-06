@@ -1,22 +1,95 @@
 @use "../../../_variables" as variables;
 
 .header {
-    display: sticky;
+    position: sticky;
+    z-index: 99;
+    background-color: white;
     top: 0;
-    width: 100%;
-    padding: .5rem 0;
+    left:0;
+    right:0;
+    padding: .5rem .5rem;
     box-shadow: 1px 2px 5px rgba(0,0,0,.25)
 };
 
 .header__button__group {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
+}
+
+.header__button {
+    color: variables.$primary;
+    cursor: pointer;
+    transition: all .25s;
+    &:hover {
+        color: variables.$primary-hover
+    }
 }
 
 .header__container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
+    max-width: 1640px;
+}
+
+.profile__card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     align-items: center;
+    margin-left: 2rem;
+    cursor: pointer;
+
+    &>* {
+        pointer-events: none;
+    }
+}
+
+.profile__card__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+
+    .profile__card__name {
+        font-weight: semibold;
+        color: variables.$black-80
+    }
+
+    .profile__card__email {
+        font-weight: thin;
+        font-size: .75rem;
+        color: variables.$black-40
+    }
+}
+
+.profile__card__image {
+    width: 3rem;
+    height: 3rem;
+    min-height: 3rem;
+    min-width: 3rem;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+}
+
+.mobile--menu__button{
+    color: variables.$primary;
+    
+    @include variables.desktop {
+        display: none;
+    }   
+
+    &:hover {
+        color: variables.$primary-hover
+    }
 }

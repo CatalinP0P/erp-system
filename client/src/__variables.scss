@@ -1,7 +1,13 @@
 $primary: #5A29E5;
 $primary-hover: #906AFE;
-$black: #25202D;
-$white: #FEF6FF;
+
+$black-100: #25202D;
+$black-80: #2e2e2e;
+$black-60: #666666;
+$black-40: #a3a3a3;
+$black-20: #cfcfcf;
+$black-10: #e8e8e8;
+$black-5: #eaeaea;
 
 
 @mixin phone {

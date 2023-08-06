@@ -1,4 +1,18 @@
+@use "../../../_variables" as variables;
+
 .logo {
-    width: 10rem;
     height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+}
+
+.logo__text {
+    font-weight: bold;
+    font-size: 1.25rem
+}
+
+.logo__image {
+    color: variables.$primary
 }
