@@ -1,0 +1,17 @@
+@use "../../../../_variables" as variables;
+
+.table__column__title{
+    color: variables.$primary;
+    font-weight: 800;
+}
+
+.table__column__title::first-letter {
+    text-transform: uppercase;
+}
+
+.table__pagination {
+    width: 100% ;
+    color: black ;
+    display: flex ;
+    justify-content: space-between ;
+}

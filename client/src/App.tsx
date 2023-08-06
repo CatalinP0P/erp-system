@@ -1,8 +1,10 @@
 import React from 'react'
 import Layout from './layout'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Overview from './pages/overview/overview'
 import AuthProvider from './context/authContext'
+
+import Overview from './pages/overview/overview'
+import Projects from './pages/projects/projects'
 
 export default function App() {
   return (
@@ -11,6 +13,7 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Overview />} />
+            <Route path="/projects" element={<Projects />} />
           </Routes>
         </Layout>
       </BrowserRouter>
