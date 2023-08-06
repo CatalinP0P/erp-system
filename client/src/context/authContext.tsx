@@ -45,7 +45,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     await firebase.auth().signInWithPopup(provider)
   }
 
-  return !loading && user ? (
+  return user !== null ? (
     <AuthContext.Provider value={{ user, loading, signOut, signWithGoogle }}>
       {children}
     </AuthContext.Provider>
