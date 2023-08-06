@@ -8,17 +8,12 @@ export default function SalesChart() {
 
   return (
     <LineChart
-      height={500}
+      height={400}
       series={[
         { data: sales, label: 'Sales', area: false },
         { data: profit, label: 'Profit' },
       ]}
       xAxis={[{ scaleType: 'point', data: xAxis }]}
-      // sx={{
-      //   '.MuiLineElement-root, .MuiMarkElement-root': {
-      //     display: 'none',
-      //   },
-      // }}
     />
   )
 }

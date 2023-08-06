@@ -42,11 +42,18 @@ export default function Header({
         </div>
         <div className="header__button__group">
           <HeaderButton Icon={SettingsIcon}>
-            <label>Settings</label>
+            <div className="header__button__dropdown__content">
+              <label className="title">Settings</label>
+              <hr />
+            </div>
           </HeaderButton>
 
           <HeaderButton Icon={Notifications}>
-            <label>Notifications</label>
+            <div className="header__button__dropdown__content">
+              <label className="title">Notifications</label>
+              <hr />
+              <label>No Notifications...</label>
+            </div>
           </HeaderButton>
 
           {accountDropdown && (

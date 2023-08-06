@@ -30,6 +30,28 @@
     }
 }
 
+.header__button__dropdown__content {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+
+    hr {
+        width: 100%
+    }
+
+    label {
+        font-size: .75rem;
+    }
+
+    .title {
+        font-size: 1.125rem;
+        color: variables.$primary;
+        font-weight: 800;
+    }  
+}
+
+  
+
 .header__button__container {
     position: relative;
 }
@@ -47,7 +69,8 @@
     position: absolute;
     opacity: 0;
     right: 0;
-    top: 2.75rem;
+    top: 3.1rem;
+    padding: .5rem;
     transform: translateY(-20px);
     transition: all .25s ease-out;
     background-color: white;
