@@ -3,6 +3,7 @@ import Card from '../../components/ui/card/card'
 import CustomTable, {
   TableColProps,
 } from '../../components/ui/tables/customTable/customTable'
+import useEmployees from '../../hooks/useEmployees'
 
 export default function Team() {
   const tableCols: TableColProps[] = [
@@ -13,26 +14,7 @@ export default function Team() {
     { title: 'salary', sortable: true },
   ]
 
-  const employes = [
-    {
-      id: 1,
-      name: 'Pop Catalin',
-      email: 'catalinpce@gmail.com',
-      signDate: `${
-        new Date().getUTCMonth() + 1
-      }-${new Date().getUTCFullYear()}`,
-      salary: 2400,
-    },
-    {
-      id: 2,
-      name: 'John Mike',
-      email: 'john@gmail.com',
-      signDate: `${
-        new Date().getUTCMonth() + 1
-      }-${new Date().getUTCFullYear()}`,
-      salary: 2200,
-    },
-  ]
+  const { employees } = useEmployees()
 
   return (
     <>
@@ -63,7 +45,7 @@ export default function Team() {
       <Card size={4}>
         <label className="card__title">Employes</label>
         <hr />
-        <CustomTable cols={tableCols} rows={employes} />
+        <CustomTable cols={tableCols} rows={employees ? employees : []} />
       </Card>
     </>
   )

@@ -6,7 +6,22 @@ const useEmployees = () => {
   const [loading, setLoading] = useState(true)
 
   const fetchEmployes = () => {
-    setEmployees([])
+    setEmployees([
+      {
+        id: '1',
+        name: 'Pop Catalin',
+        email: 'catalinpce@gmail.com',
+        signDate: new Date(),
+        salary: 2400,
+      },
+      {
+        id: '2',
+        name: 'John Mike',
+        email: 'john@gmail.com',
+        signDate: new Date(),
+        salary: 1800,
+      },
+    ])
     setLoading(false)
   }
 
