@@ -72,6 +72,12 @@ export default function CustomTable({
     return array
   }
 
+  const formatDate = (date: Date) => {
+    return `${date.getUTCDate()}-${
+      date.getMonth() + 1
+    }-${date.getUTCFullYear()}`
+  }
+
   return (
     <TableContainer>
       <Table>
@@ -92,7 +98,9 @@ export default function CustomTable({
                 {cols.map((col) => {
                   return (
                     <TableCell key={Math.random() * 1000}>
-                      {row[col.title]}
+                      {row[col.title] instanceof Date
+                        ? formatDate(row[col.title])
+                        : row[col.title]}
                     </TableCell>
                   )
                 })}
