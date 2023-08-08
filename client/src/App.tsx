@@ -6,6 +6,7 @@ import AuthProvider from './context/authContext'
 import Overview from './pages/overview/overview'
 import Projects from './pages/projects/projects'
 import Project from './pages/project/project'
+import Team from './pages/team/team'
 
 import './App.css'
 
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/" element={<Overview />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/project/:id" element={<Project />} />
+            <Route path="/team" element={<Team />} />
           </Routes>
         </Layout>
       </BrowserRouter>
