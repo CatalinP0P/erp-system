@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getAll,
+  getAveragePrice,
   getById,
   getCount,
   getCountByField,
@@ -21,6 +22,11 @@ router.get("/status/:status", async (req, res) => {
   const { status } = req.params;
   const count = await getCountByField("status", status);
   res.json(count);
+});
+
+router.get("/average/price", async (req, res) => {
+  const averagePrice = await getAveragePrice();
+  res.json(averagePrice);
 });
 
 router.get("/:id", async (req, res) => {
