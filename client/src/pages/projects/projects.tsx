@@ -1,9 +1,7 @@
 import Card from '../../components/ui/card/card'
 import React from 'react'
 import useProjects from '../../hooks/useProjects'
-import CustomTable, {
-  TableColProps,
-} from '../../components/ui/tables/customTable/customTable'
+import CustomTable from '../../components/ui/tables/customTable/customTable'
 import { useNavigate } from 'react-router-dom'
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
 import { DefaultizedPieValueType } from '@mui/x-charts'
@@ -14,12 +12,12 @@ export default function Projects() {
 
   const projectCols = [
     { title: 'id', sortable: true },
-    { title: 'projectTitle', sortable: true },
+    { title: 'title', sortable: true },
     { title: 'buyerEmail', sortable: true },
     { title: 'status', sortable: true },
   ]
 
-  const handleShowDetails = (projectID: any) => {
+  const handleShowDetails = (projectID: number) => {
     navigate(`/project/${projectID}`)
   }
 
