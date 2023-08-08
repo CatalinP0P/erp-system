@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import Project from "../schemas/Project.js";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 mongoose
-  .connect(
-    "mongodb+srv://CatalinPCE:123@testingcluster.xtluszh.mongodb.net/ERP-Project?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_CONNECT)
   .then(() => {
     console.log("Conencted to db");
   })
