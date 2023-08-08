@@ -5,6 +5,9 @@ import AuthProvider from './context/authContext'
 
 import Overview from './pages/overview/overview'
 import Projects from './pages/projects/projects'
+import Project from './pages/project/project'
+
+import './App.css'
 
 export default function App() {
   return (
@@ -14,6 +17,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Overview />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/project/:id" element={<Project />} />
           </Routes>
         </Layout>
       </BrowserRouter>

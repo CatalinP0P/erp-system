@@ -9,6 +9,10 @@ body {
     color: variables.$black-100
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .layout--grid {
     display: flex;
     flex-direction: row;

@@ -1,0 +1,50 @@
+@use "../../../_variables" as variables;
+
+.button {
+    padding: .5rem 1rem;
+    transition: all .25s ease-out;
+    border-radius: .5rem;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+
+    &.button--primary {
+        background-color: variables.$primary;
+        color: white;
+
+        &:hover {
+            background-color: variables.$primary-hover;
+        }
+    }
+
+    &.button--secondary {
+        background-color: variables.$black-60;
+        color: white;
+        border:none;
+
+        &:hover {
+            background-color: variables.$black-40;
+        }
+    }
+
+    &.button--tertiary {
+        background-color: white;
+        border: 2px solid variables.$primary;
+        color: variables.$primary;
+
+        &:hover {
+            background-color: variables.$primary;
+            color: white;
+        }
+    }
+
+    &.button--danger{
+        background-color: red;
+        color: white;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+   
+}
