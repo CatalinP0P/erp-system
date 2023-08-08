@@ -6,8 +6,11 @@ export const getAll = async () => {
 };
 
 export const getById = async (id) => {
-  const project = await Project.findById(id);
-  return project;
+  try {
+    return await Project.findById(id);
+  } catch (err) {
+    return { err: err.message };
+  }
 };
 
 export const getCount = async () => {

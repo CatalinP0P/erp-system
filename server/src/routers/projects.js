@@ -6,6 +6,7 @@ import {
   getCount,
   getCountByField,
 } from "../utils/database/projects.js";
+import Project from "../schemas/project.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -31,8 +32,18 @@ router.get("/average/price", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const project = await getById(id);
-  res.json(project);
+  const response = await getById(id);
+  if (response.err) {
+    return res.status(400).json(response.err);
+  }
+  return res.json(response);
+});
+
+router.post("/", async (req, res) => {
+  const projectData = req.body;
+  const newProject = new Project(projectData);
+  await newProject.save();
+  res.json(newProject);
 });
 
 export default router;
