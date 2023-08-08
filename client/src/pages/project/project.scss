@@ -1,0 +1,33 @@
+@use "../../_variables" as variables;
+
+.back--button{
+    grid-column: span 4;
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    display: flex ;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    cursor:pointer;
+    color: variables.$black-80;
+    transition: all .25s;
+    font-weight: 600;
+
+    @include variables.phone {
+        grid-column: span 2;
+    }
+
+    &:hover {
+        gap: .75rem
+    }
+
+    &>* {
+        pointer-events: none;
+    }
+}
+
+.save-button__container {
+    display: flex;
+    width: 100% ;
+    justify-content: end;
+}
