@@ -30,6 +30,13 @@ export default function Projects() {
     { value: 50, label: 'Portfolio' },
   ]
 
+  const averageExpenses = [
+    { value: 5, label: 'Hosting' },
+    { value: 25, label: 'Services' },
+    { value: 25, label: 'Database Storage' },
+    { value: 35, label: 'Labour' },
+  ]
+
   const TOTAL = data.map((item) => item.value).reduce((a, b) => a + b, 0)
 
   const getArcLabel = (params: DefaultizedPieValueType) => {
@@ -46,9 +53,9 @@ export default function Projects() {
       </Card>
 
       <Card size={1}>
-        <label className="card__title">Average Price</label>
+        <label className="card__title">Total Profit</label>
         <hr />
-        <label className="card__number">1240 €</label>
+        <label className="card__number">231.000 €</label>
       </Card>
 
       <Card size={1}>
@@ -63,7 +70,7 @@ export default function Projects() {
         <label className="card__number">314</label>
       </Card>
 
-      <Card size={1}>
+      <Card size={2}>
         <label className="card__title">Project Category</label>
         <hr />
         <div
@@ -95,9 +102,66 @@ export default function Projects() {
         </div>
       </Card>
 
+      <Card size={2}>
+        <label className="card__title">Average Expenses</label>
+        <hr />
+        <div
+          style={{
+            width: 'fit-content',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }}
+        >
+          <PieChart
+            series={[
+              {
+                arcLabelMinAngle: 30,
+                outerRadius: 80,
+                data: averageExpenses,
+                arcLabel: getArcLabel,
+              },
+            ]}
+            sx={{
+              [`& .${pieArcLabelClasses.root}`]: {
+                fill: 'white',
+              },
+            }}
+            height={200}
+            width={200}
+            margin={{ left: 90 }}
+            legend={{ hidden: true }}
+          />
+        </div>
+      </Card>
+
+      <Card>
+        <label className="card__title">Average Delivery</label>
+        <hr />
+        <label className="card__number">7 Days</label>
+      </Card>
+
+      <Card size={1}>
+        <label className="card__title">Average Project Expenses</label>
+        <hr />
+        <label className="card__number">620 €</label>
+      </Card>
+
+      <Card size={1}>
+        <label className="card__title">Average Project Profit</label>
+        <hr />
+        <label className="card__number">1120 €</label>
+      </Card>
+
+      <Card size={1}>
+        <label className="card__title">Average Project Price</label>
+        <hr />
+        <label className="card__number">1840 €</label>
+      </Card>
+
       <Card size={4}>
         <label className="card__title">Projects</label>
         <hr />
+
         <CustomTable
           rows={projects ? projects : []}
           cols={projectCols}
