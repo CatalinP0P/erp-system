@@ -81,6 +81,7 @@ export default function Projects() {
           }}
         >
           <PieChart
+            colors={['#8CABFF', '#4477CE', '#512B81', '#35155D']}
             series={[
               {
                 arcLabelMinAngle: 20,
@@ -113,6 +114,7 @@ export default function Projects() {
           }}
         >
           <PieChart
+            colors={['#AED8CC', '#CD6688', '#7A316F', '#461959']}
             series={[
               {
                 arcLabelMinAngle: 30,
@@ -129,7 +131,7 @@ export default function Projects() {
             height={200}
             width={200}
             margin={{ left: 90 }}
-            legend={{ hidden: true }}
+            legend={{ hidden: false }}
           />
         </div>
       </Card>
