@@ -9,6 +9,7 @@ import {
 import React, { useState } from 'react'
 import TableHeader from './customTableHeader'
 import './customTable.scss'
+import Button from '../../button/button'
 
 export interface TableColProps {
   title: string
@@ -19,12 +20,14 @@ interface CustomTableProps {
   rows: any[]
   cols: TableColProps[]
   removeRow?: any
+  showDetails?: any
 }
 
 export default function CustomTable({
   rows,
   cols,
   removeRow,
+  showDetails,
 }: CustomTableProps) {
   const [pageSize, setPageSize] = useState(2)
   const [page, setPage] = useState(0)
@@ -75,6 +78,7 @@ export default function CustomTable({
         <TableHeader
           cols={cols}
           removeRow={removeRow ? true : false}
+          showDetails={showDetails ? true : false}
           handleSortClick={handleSortClick}
           handlePageSizeChange={handlePageSizeChange}
           sortingField={sortingField}
@@ -92,11 +96,21 @@ export default function CustomTable({
                     </TableCell>
                   )
                 })}
+                {showDetails && (
+                  <TableCell>
+                    <Button
+                      variant="secondary"
+                      onClick={() => showDetails(row.id)}
+                    >
+                      Show Details
+                    </Button>
+                  </TableCell>
+                )}
                 {removeRow && (
                   <TableCell>
                     <button
                       onClick={() => removeRow(row.id)}
-                      className="text-blue-400"
+                      className="button button--danger"
                     >
                       Remove
                     </button>

@@ -15,3 +15,24 @@
     display: flex ;
     justify-content: space-between ;
 }
+
+.button {
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    transition: all .25s ease-out;
+    
+    &.button--secondary{
+        border: 2px solid variables.$primary;
+        color: variables.$primary;
+
+        &:hover {
+            background-color: variables.$primary;
+            color: white;
+        }
+    }
+
+    &.button--danger {
+        background-color: red;
+        color: white;
+    }
+}

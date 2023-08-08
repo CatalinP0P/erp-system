@@ -1,16 +1,21 @@
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TableColProps } from './customTable'
 
 export default function TableHeader(props: any) {
   const {
     cols,
     removeRow,
+    showDetails,
     handlePageSizeChange,
     handleSortClick,
     sortingField,
     sortingDirection,
   } = props
+
+  useEffect(() => {
+    console.log(showDetails)
+  }, [])
 
   return (
     <TableHead>
@@ -39,11 +44,14 @@ export default function TableHeader(props: any) {
             )}
           </TableCell>
         ))}
+        {showDetails && (
+          <TableCell>
+            <label className="table__column__title">Show Details</label>
+          </TableCell>
+        )}
         {removeRow && (
-          <TableCell
-            style={{ color: 'white', fontWeight: 'bold', opacity: '.6' }}
-          >
-            Remove
+          <TableCell>
+            <label className="table__column__title">Remove</label>
           </TableCell>
         )}
       </TableRow>
