@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Project from "../schemas/Project.js";
+import Project from "../schemas/project.js";
 import * as dotenv from "dotenv";
 dotenv.config();
 

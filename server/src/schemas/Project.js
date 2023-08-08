@@ -10,6 +10,7 @@ const projectSchema = new Schema({
     enum: ["todo", "done", "doing", "canceled"],
     default: "todo",
   },
+  price: { type: Number, min: 0 },
 });
 
 const Project = model("Project", projectSchema);
