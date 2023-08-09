@@ -1,13 +1,14 @@
 import Card from '../../components/ui/card/card'
-import React from 'react'
+import React, { useEffect } from 'react'
 import useProjects from '../../hooks/useProjects'
 import CustomTable from '../../components/ui/tables/customTable/customTable'
 import { useNavigate } from 'react-router-dom'
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
 import { DefaultizedPieValueType } from '@mui/x-charts'
+import { useDatabase } from '../../context/databaseContext'
 
 export default function Projects() {
-  const { projects } = useProjects()
+  const { projects } = useDatabase()
   const navigate = useNavigate()
 
   const projectCols = [
@@ -42,12 +43,16 @@ export default function Projects() {
     return `${(percent * 100).toFixed(0)}%`
   }
 
+  useEffect(() => {
+    console.log(projects)
+  })
+
   return (
     <>
       <Card size={1}>
         <label className="card__title">Total Projects</label>
         <hr />
-        <label className="card__number">410</label>
+        <label className="card__number">{projects?.length}</label>
       </Card>
 
       <Card size={1}>
@@ -59,13 +64,17 @@ export default function Projects() {
       <Card size={1}>
         <label className="card__title">Projects Canceled</label>
         <hr />
-        <label className="card__number">24</label>
+        <label className="card__number">
+          {projects?.filter((m) => m.status === 'canceled').length}
+        </label>
       </Card>
 
       <Card size={1}>
         <label className="card__title">Projects Completed</label>
         <hr />
-        <label className="card__number">314</label>
+        <label className="card__number">
+          {projects?.filter((m) => m.status === 'done').length}
+        </label>
       </Card>
 
       <Card size={2}>

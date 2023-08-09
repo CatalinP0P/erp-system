@@ -9,20 +9,23 @@ import Project from './pages/project/project'
 import Team from './pages/team/team'
 
 import './App.css'
+import { DatabaseProvider } from './context/databaseContext'
 
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Overview />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/project/:id" element={<Project />} />
-            <Route path="/team" element={<Team />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
+      <DatabaseProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Overview />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/project/:id" element={<Project />} />
+              <Route path="/team" element={<Team />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </DatabaseProvider>
     </AuthProvider>
   )
 }
