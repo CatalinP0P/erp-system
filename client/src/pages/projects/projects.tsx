@@ -1,6 +1,5 @@
 import Card from '../../components/ui/card/card'
 import React, { useEffect } from 'react'
-import useProjects from '../../hooks/useProjects'
 import CustomTable from '../../components/ui/tables/customTable/customTable'
 import { useNavigate } from 'react-router-dom'
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
@@ -8,7 +7,7 @@ import { DefaultizedPieValueType } from '@mui/x-charts'
 import { useDatabase } from '../../context/databaseContext'
 
 export default function Projects() {
-  const { projects } = useDatabase()
+  const { projects, averageProjectPrice } = useDatabase()
   const navigate = useNavigate()
 
   const projectCols = [
@@ -164,7 +163,7 @@ export default function Projects() {
       <Card size={1}>
         <label className="card__title">Average Project Price</label>
         <hr />
-        <label className="card__number">1840 €</label>
+        <label className="card__number">{averageProjectPrice} €</label>
       </Card>
 
       <Card size={4}>
