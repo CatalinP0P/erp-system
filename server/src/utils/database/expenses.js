@@ -1,4 +1,6 @@
+import { allowedNodeEnvironmentFlags } from "process";
 import Expense from "../../schemas/expense.js";
+import * as projects from "../database/projects.js";
 
 export const getAll = async () => {
   return await Expense.find({});
@@ -11,13 +13,14 @@ export const getTotal = async () => {
   allExpenses.forEach((expense) => {
     total += expense.value;
   });
+  console.log(total);
 
   return total;
 };
 
 export const getById = async (id) => {
   try {
-    return await Expense.findById(id);
+    return await Expense.find({ projectId: id });
   } catch (err) {
     return { err: err.message };
   }
@@ -29,10 +32,10 @@ export const getTotalById = async (id) => {
   if (allExpenses.err) {
     return { err: allExpenses.err };
   }
-
+  console.log(allExpenses);
   var total = 0;
   allExpenses.forEach((expense) => {
-    total += expense.price;
+    total += expense.value;
   });
 
   return total;
@@ -57,4 +60,16 @@ export const add = async (expenseData) => {
   } catch (err) {
     return { err: err.message };
   }
+};
+
+export const getAverageExpenses = async () => {
+  const allProjects = await projects.getAll();
+  var sum = 0;
+  var count = 0;
+  for (let i = 0; i < allProjects.length; i++) {
+    sum += await getTotalById(allProjects[i].id);
+    count += 1;
+  }
+
+  return count > 0 ? sum / count : 0;
 };

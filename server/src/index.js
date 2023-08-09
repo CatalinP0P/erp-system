@@ -16,6 +16,9 @@ app.use("/employees", employeeRouter);
 import expenseRouter from "./routers/expenses.js";
 app.use("/expenses", expenseRouter);
 
+import earningsRouter from "./routers/earnings.js";
+app.use("/earnings", earningsRouter);
+
 app.listen(3001, () => {
   console.log("Server running on port 3001");
 });
