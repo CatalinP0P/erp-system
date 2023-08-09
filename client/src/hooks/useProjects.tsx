@@ -12,18 +12,24 @@ const useProjects = () => {
         title: 'Portfolio Web Page',
         buyerEmail: 'catalinpce@gmail.com',
         status: 'done',
+        category: 'portfolio',
+        price: 1200,
       },
       {
         id: 2,
         title: 'Ecommerce Web App',
         buyerEmail: 'john@gmail.com',
         status: 'doing',
+        category: 'ecommerce',
+        price: 4000,
       },
       {
         id: 3,
         title: 'Brochure Web Agency',
         buyerEmail: 'john@gmail.com',
         status: 'canceled',
+        category: 'brochure',
+        price: 22000,
       },
     ])
     setLoading(false)

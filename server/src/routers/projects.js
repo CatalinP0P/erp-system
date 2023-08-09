@@ -30,6 +30,12 @@ router.get("/average/price", async (req, res) => {
   res.json(averagePrice);
 });
 
+router.get("/category/:category", async (req, res) => {
+  const { category } = req.params;
+  const count = await getCountByField("category", category.toLowerCase());
+  res.json(count);
+});
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const response = await getById(id);

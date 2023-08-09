@@ -3,4 +3,6 @@ export interface ProjectProps {
   title: string
   buyerEmail: string
   status: string
+  category: string
+  price: number
 }

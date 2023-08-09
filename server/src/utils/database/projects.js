@@ -34,5 +34,5 @@ export const getAveragePrice = async () => {
     }
   }
 
-  return count > 0 ? price / projects.length : 0;
+  return count > 0 ? price / count : 0;
 };
