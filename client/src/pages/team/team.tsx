@@ -14,24 +14,8 @@ export default function Team() {
     { title: 'salary', sortable: true },
   ]
 
-  const { employees, getAverageEmployeeSalary, getMinimumEmployeeSalary } =
+  const { employees, averageEmployeeSalary, minimumEmployeeSalary } =
     useDatabase()
-
-  const [averageSalary, setAverageSalary] = useState(0)
-  const [minSalary, setMinSalary] = useState(0)
-
-  const fetchData = async () => {
-    setAverageSalary(
-      getAverageEmployeeSalary ? await getAverageEmployeeSalary() : 2000
-    )
-    setMinSalary(
-      getMinimumEmployeeSalary ? await getMinimumEmployeeSalary() : 1400
-    )
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
 
   return (
     <>
@@ -44,7 +28,7 @@ export default function Team() {
       <Card size={1}>
         <label className="card__title">Average Salary</label>
         <hr />
-        <label className="card__number">{averageSalary} €</label>
+        <label className="card__number">{averageEmployeeSalary} €</label>
       </Card>
 
       <Card size={1}>
@@ -56,7 +40,7 @@ export default function Team() {
       <Card size={1}>
         <label className="card__title">Base Salary</label>
         <hr />
-        <label className="card__number">{minSalary} €</label>
+        <label className="card__number">{minimumEmployeeSalary} €</label>
       </Card>
 
       <Card size={4}>

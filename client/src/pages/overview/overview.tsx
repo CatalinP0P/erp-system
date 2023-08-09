@@ -1,14 +1,19 @@
 import React from 'react'
 import Card from '../../components/ui/card/card'
 import SalesChart from './components/salesChart'
+import { useDatabase } from '../../context/databaseContext'
 
 export default function Overview() {
+  const { projects } = useDatabase()
+
   return (
     <>
       <Card>
         <label className="card__title">Projects Completed</label>
         <hr />
-        <label className="card__number">214</label>
+        <label className="card__number">
+          {projects?.filter((m) => m.status == 'done').length}
+        </label>
       </Card>
 
       <Card>
