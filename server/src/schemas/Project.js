@@ -7,7 +7,7 @@ const projectSchema = new Schema({
   date: { type: Date, default: () => Date.now() },
   category: {
     type: String,
-    enum: ["portfolio", "brochure", "dashboard", "other"],
+    enum: ["portfolio", "brochure", "dashboard", "other", "ecommerce"],
   },
   status: {
     type: String,

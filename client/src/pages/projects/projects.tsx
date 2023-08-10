@@ -1,32 +1,48 @@
 import Card from '../../components/ui/card/card'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomTable from '../../components/ui/tables/customTable/customTable'
 import { useNavigate } from 'react-router-dom'
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
 import { DefaultizedPieValueType } from '@mui/x-charts'
 import { useDatabase } from '../../context/databaseContext'
+import { projectCategories } from '../../types/project'
+import { expenseCategories } from '../../types/expense'
+import { updateJsxSelfClosingElement } from 'typescript'
 
 export default function Projects() {
-  const { projects, averageProjectPrice } = useDatabase()
+  const {
+    projects,
+    averageProjectPrice,
+    totalProfit,
+    averageProjectProfit,
+    averageProjectExpenses,
+    expenses,
+  } = useDatabase()
   const navigate = useNavigate()
 
   const projectCols = [
     { title: 'id', sortable: true },
     { title: 'title', sortable: true },
     { title: 'buyerEmail', sortable: true },
+    { title: 'date', sortable: true },
     { title: 'status', sortable: true },
+    { title: 'price', sortable: true },
   ]
 
   const handleShowDetails = (projectID: number) => {
     navigate(`/project/${projectID}`)
   }
 
-  const data = [
-    { value: 5, label: 'Ecommerce' },
-    { value: 15, label: 'Dashboard' },
-    { value: 30, label: 'Agency' },
-    { value: 50, label: 'Portfolio' },
-  ]
+  const [projectCategoriesData, setProjectCategories] = useState<
+    {
+      value: number
+      label: string
+    }[]
+  >([])
+
+  const [projectExpensesData, setProjectExpensesData] = useState<
+    { value: number; label: string }[]
+  >([])
 
   const averageExpenses = [
     { value: 5, label: 'Hosting' },
@@ -35,16 +51,52 @@ export default function Projects() {
     { value: 35, label: 'Labour' },
   ]
 
-  const TOTAL = data.map((item) => item.value).reduce((a, b) => a + b, 0)
+  const TOTAL = projectCategoriesData
+    .map((item) => item.value)
+    .reduce((a, b) => a + b, 0)
 
   const getArcLabel = (params: DefaultizedPieValueType) => {
     const percent = params.value / TOTAL
     return `${(percent * 100).toFixed(0)}%`
   }
 
+  const completeCategoriesChart = () => {
+    setProjectCategories([])
+    projectCategories.map((category) => {
+      setProjectCategories((old: any) => [
+        ...old,
+        {
+          value: projects?.filter((m) => m.category == category).length,
+          label: category,
+        },
+      ])
+    })
+
+    console.log(projectCategoriesData)
+  }
+
+  const completeExpensesChart = () => {
+    setProjectExpensesData([])
+    expenseCategories.map((category: string) => {
+      setProjectExpensesData((old: any) => [
+        ...old,
+        {
+          value: expenses?.filter((m) => m.category == category).length,
+          label: category,
+        },
+      ])
+    })
+  }
+
   useEffect(() => {
-    console.log(projects)
-  })
+    completeCategoriesChart()
+    completeExpensesChart()
+  }, [projects])
+
+  useEffect(() => {
+    console.log(expenses)
+    completeExpensesChart()
+  }, [expenses])
 
   return (
     <>
@@ -57,7 +109,7 @@ export default function Projects() {
       <Card size={1}>
         <label className="card__title">Total Profit</label>
         <hr />
-        <label className="card__number">231.000 €</label>
+        <label className="card__number">{totalProfit} €</label>
       </Card>
 
       <Card size={1}>
@@ -92,7 +144,7 @@ export default function Projects() {
               {
                 arcLabelMinAngle: 20,
                 outerRadius: 80,
-                data,
+                data: projectCategoriesData,
                 arcLabel: getArcLabel,
               },
             ]}
@@ -125,13 +177,16 @@ export default function Projects() {
               {
                 arcLabelMinAngle: 30,
                 outerRadius: 80,
-                data: averageExpenses,
-                arcLabel: getArcLabel,
+                arcLabel: (item) => {
+                  return item.label
+                },
+                data: projectExpensesData,
               },
             ]}
             sx={{
               [`& .${pieArcLabelClasses.root}`]: {
                 fill: 'white',
+                fontSize: '.75rem',
               },
             }}
             height={200}
@@ -151,13 +206,13 @@ export default function Projects() {
       <Card size={1}>
         <label className="card__title">Average Project Expenses</label>
         <hr />
-        <label className="card__number">620 €</label>
+        <label className="card__number">{averageProjectExpenses}€</label>
       </Card>
 
       <Card size={1}>
         <label className="card__title">Average Project Profit</label>
         <hr />
-        <label className="card__number">1120 €</label>
+        <label className="card__number">{averageProjectProfit} €</label>
       </Card>
 
       <Card size={1}>

@@ -1,6 +1,7 @@
 import express from "express";
 import {
   add,
+  getAll,
   getById,
   getTotal,
   getTotalByCategory,
@@ -9,6 +10,10 @@ import {
 import * as projects from "../utils/database/projects.js";
 
 const router = express.Router();
+
+router.get("/", async (req, res) => {
+  return res.json(await getAll());
+});
 
 router.get("/total", async (req, res) => {
   res.json(await getTotal());

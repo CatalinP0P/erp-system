@@ -6,3 +6,11 @@ export interface ProjectProps {
   category: string
   price: number
 }
+
+export const projectCategories = [
+  'service',
+  'ecommerce',
+  'portfolio',
+  'dashboard',
+  'other',
+]
